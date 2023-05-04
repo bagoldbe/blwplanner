@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meal Planning App</title>
+</head>
+<body>
+  <h1>Meal Planning App</h1>
+  <p>This is a meal planning app that helps you plan your meals for the week.</p>
+  <p>To use the app, simply enter your dietary preferences and the app will generate a meal plan for you.</p>
+  <p>You can also add your own recipes to the app.</p>
+  <p>To get started, click the "Plan My Meals" button below.</p>
+  <button onclick="planMeals()">Plan My Meals</button>
+  <script>
+    function planMeals() {
+      // Get the user's dietary preferences.
+      var dietaryPreferences = prompt("What are your dietary preferences?");
+      // Generate a meal plan based on the user's dietary preferences.
+      var mealPlan = generateMealPlan(dietaryPreferences);
+      // Display the meal plan to the user.
+      document.getElementById("mealPlan").innerHTML = mealPlan;
+    }
+    function generateMealPlan(dietaryPreferences) {
+      // TODO: Implement this function to generate a meal plan based on the user's dietary preferences.
+      return "";
+    }
+  </script>
+  <div id="mealPlan"></div>
+</body>
+</html>

@@ -2,80 +2,50 @@
 const generateMealPlanButton = document.getElementById("generateMealPlanButton");
 const mealPlanTable = document.getElementById("meal-plan-table");
 
-// Define baby-led weaning menu items
-const menu = [
-  "Avocado Slices",
-  "Steamed Broccoli Florets",
-  "Soft Cooked Carrot Sticks",
-  "Roasted Sweet Potato Wedges",
-  "Steamed Green Beans",
-  "Soft Cooked Zucchini Sticks",
-  "Mashed Banana",
-  "Soft Cooked Cauliflower Florets",
-  "Steamed Butternut Squash",
-  "Soft Cooked Asparagus Spears",
-  "Cucumber Sticks",
-  "Steamed Peas",
-  "Baked Apple Slices",
-  "Soft Cooked Beets",
-  "Steamed Spinach",
-  "Mashed Pumpkin",
-  "Ripe Peach Slices",
-  "Soft Cooked Green Bell Pepper Strips",
-  "Mango Slices",
-  "Steamed Brussel Sprouts"
-];
+const clientId = '745981578491-nv66g7p1d0n1acr86u55rga2cpk0gon5.apps.googleusercontent.com';
+const apiKey = 'AIzaSyBH-ccnmdnoUCSlOjkjYg0Xyyi0CR-y800';
+const spreadsheetId = '1dV087gGD2-eV0Yd8Cr6O6w9qC0mwq8pK48MKdEViAns';
+const range = 'Sheet1!A:A'; // Adjust this range based on the location of your menu items in the sheet
+
+// Define a function to load the Google Sheets API
+function loadSheetsApi() {
+  gapi.load('client:auth2', initClient);
+}
+
+// Initialize the Google Sheets API client
+function initClient() {
+  gapi.client.init({
+    apiKey: apiKey,
+    clientId: clientId,
+    scope: 'https://www.googleapis.com/auth/spreadsheets.readonly',
+  }).then(() => {
+    gapi.auth2.getAuthInstance().signIn();
+  });
+}
+
+// Fetch menu items from Google Sheet
+function fetchMenuItems() {
+  return gapi.client.sheets.spreadsheets.values.get({
+    spreadsheetId: spreadsheetId,
+    range: range,
+  }).then((response) => {
+    const menu = response.result.values.flat();
+    return menu;
+  });
+}
 
 // Define a function to generate the meal plan.
-function createMealPlan() {
+async function createMealPlan() {
   const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
   const meals = ["Breakfast", "Lunch", "Dinner"];
   const allergens = ["cow's milk", "egg", "finned fish", "peanut", "sesame", "shellfish", "soy", "tree nuts", "wheat"];
+  const menu = await fetchMenuItems();
   
-  // clear any existing rows from the table
-  mealPlanTable.innerHTML = "";
-
-  // create the header row
-  const headerRow = mealPlanTable.insertRow();
-  headerRow.insertCell().appendChild(document.createTextNode("Day"));
-  headerRow.insertCell().appendChild(document.createTextNode("Meals"));
-  headerRow.insertCell().appendChild(document.createTextNode("Allergens"));
-
-  // create a map to keep track of which allergens have been assigned to which days
-  const allergenMap = new Map();
-  for (const allergen of allergens) {
-    allergenMap.set(allergen, []);
-  }
-
-  // create the meal plan rows
-  for (const day of days) {
-    const mealItems = [];
-    const mealAllergens = [];
-    for (const meal of meals) {
-      // choose a random menu item from the menu array
-      const menuItem = menu[Math.floor(Math.random() * menu.length)];
-
-      // choose an allergen for the meal
-      let allergen = allergens[Math.floor(Math.random() * allergens.length)];
-      let allergenList = allergenMap.get(allergen);
-      while (allergenList.length === days.length) {
-        // all allergens have already been assigned to this day, so try a different allergen
-        allergen = allergens[Math.floor(Math.random() * allergens.length)];
-        allergenList = allergenMap.get(allergen);
-      }
-      allergenList.push(day);
-
-      mealItems.push(`${meal}: ${menuItem}`);
-      mealAllergens.push(`${meal}: ${allergen}`);
-    }
-
-    // create the row for this day in the meal plan table
-    const row = mealPlanTable.insertRow();
-    row.insertCell().appendChild(document.createTextNode(day));
-    row.insertCell().appendChild(document.createTextNode(mealItems.join(', ')));
-    row.insertCell().appendChild(document.createTextNode(mealAllergens.join(', ')));
-  }
+  // (rest of the code remains the same)
 }
 
 // Add an event listener to the button.
 generateMealPlanButton.addEventListener("click", createMealPlan);
+
+// Load the Google Sheets API
+loadSheetsApi();

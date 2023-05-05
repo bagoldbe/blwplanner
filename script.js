@@ -2,19 +2,18 @@
 const generateMealPlanButton = document.getElementById("generateMealPlanButton");
 const mealPlanTable = document.getElementById("meal-plan-table");
 
-// Define your menu items
+// Define baby-led weaning menu items
 const menu = [
-  // Add your menu items here, as an example:
-  "Chicken Salad",
-  "Grilled Cheese Sandwich",
-  "Pasta Primavera",
-  "Caesar Salad",
-  "Fish Tacos",
-  "Stir Fry Vegetables",
-  "BBQ Chicken",
-  "Pizza",
-  "Sushi",
-  "Spaghetti Bolognese"
+  "Avocado Slices",
+  "Steamed Broccoli Florets",
+  "Soft Cooked Carrot Sticks",
+  "Roasted Sweet Potato Wedges",
+  "Steamed Green Beans",
+  "Soft Cooked Zucchini Sticks",
+  "Mashed Banana",
+  "Soft Cooked Cauliflower Florets",
+  "Steamed Butternut Squash",
+  "Soft Cooked Asparagus Spears"
 ];
 
 // Define a function to generate the meal plan.

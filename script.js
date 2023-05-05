@@ -25,7 +25,10 @@ function initClient() {
     scope: 'https://www.googleapis.com/auth/spreadsheets.readonly',
     cookie_policy: 'single_host_origin'
   }).then(() => {
+    console.log("Google Sheets API client initialized successfully.");
     gapi.auth2.getAuthInstance().signIn();
+  }).catch((error) => {
+    console.error("Failed to initialize Google Sheets API client: ", error);
   });
 }
 

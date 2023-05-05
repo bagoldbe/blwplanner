@@ -40,28 +40,43 @@ function getMealPlan() {
       name: "Broccoli and cheddar cheese omelet",
       ingredients: ["eggs", "cheddar cheese", "broccoli"],
     },
-    {
-const menu = [
-  {
-    name: "Avocado Toast",
-    ingredients: ["avocado", "bread", "lemon juice"],
-  },
-  {
-    name: "Sweet Potato Fries",
-    ingredients: ["sweet potato", "olive oil", "sea salt"],
-  },
-  {
-    name: "Broccoli Cheese Bites",
-    ingredients: ["broccoli", "cheddar cheese", "breadcrumbs"],
-  },
-  {
-    name: "Banana Pancakes",
-    ingredients: ["banana", "egg", "cinnamon"],
-  },
-  {
-    name: "Roasted Carrots",
-    ingredients: ["carrots", "olive oil", "thyme"],
-  },
-];
+  ];
 
-  //
+  // Filter the menu to include only baby led weaning foods
+  const babyLedWeaningFoods = menu.filter(item => {
+    return item.ingredients.every(ingredient => {
+      return allergens.indexOf(ingredient) === -1;
+    });
+  });
+
+  // Select five random baby led weaning foods with three ingredients or less
+  const selectedFoods = [];
+  while (selectedFoods.length < 5) {
+    const randomFood = babyLedWeaningFoods[Math.floor(Math.random() * babyLedWeaningFoods.length)];
+    if (randomFood.ingredients.length <= 3 && selectedFoods.indexOf(randomFood) === -1) {
+      selectedFoods.push(randomFood);
+    }
+  }
+
+  // Clear any existing rows from the table
+  mealPlanTable.innerHTML = "<thead><tr><th>Day</th><th>Meals</th><th>Ingredients</th></tr></thead><tbody></tbody>";
+
+  // Add a row to the table for each day and meal, and populate with a randomly selected food
+  days.forEach(day => {
+    const dayRow = document.createElement("tr");
+    const dayCell = document.createElement("td");
+    dayCell.textContent = day;
+    dayRow.appendChild(dayCell);
+    meals.forEach(meal => {
+      const mealCell = document.createElement("td");
+      mealCell.textContent = meal;
+      dayRow.appendChild(mealCell);
+      const foodCell = document.createElement("td");
+      const randomFood = selectedFoods[Math.floor(Math.random() * selectedFoods.length)];
+      const foodList = document.createElement("ul");
+      randomFood.ingredients.forEach(ingredient => {
+        const listItem = document.createElement("li");
+        listItem.textContent = ingredient;
+        foodList.appendChild(listItem);
+      });
+      foodCell.appendChild

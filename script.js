@@ -23,7 +23,7 @@ function initClient() {
     apiKey: apiKey,
     clientId: clientId,
     scope: 'https://www.googleapis.com/auth/spreadsheets.readonly',
-    cookie_policy: 'single_host_origin'
+    cookie_policy: 'none'
   }).then(() => {
     console.log("Google Sheets API client initialized successfully.");
     gapi.auth2.getAuthInstance().signIn();
@@ -34,6 +34,10 @@ function initClient() {
 
 // Fetch menu items from Google Sheet
 function fetchMenuItems() {
+  if (!gapi.client) {
+    throw new Error('Google Sheets API client not initialized.');
+  }
+  
   return gapi.client.sheets.spreadsheets.values.get({
     spreadsheetId: spreadsheetId,
     range: range,
@@ -42,6 +46,7 @@ function fetchMenuItems() {
     return menu;
   });
 }
+
 
 // Define a function to generate the meal plan.
 async function createMealPlan() {

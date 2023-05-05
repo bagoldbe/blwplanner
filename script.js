@@ -62,3 +62,4 @@ generateMealPlanButton.addEventListener("click", () => {
   const mealPlan = getMealPlan();
   displayMealPlan(mealPlan);
   loadMealPlan();
+});

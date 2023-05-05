@@ -1,72 +1,59 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Baby Led Weaning Meal Planner</title>
-</head>
-<body>
-  <h1>Baby Led Weaning Meal Planner</h1>
-  <p>This website can help you create a sample weekly baby led weaning meal plan in a table format.</p>
-  <form action="/generate-meal-plan" method="post">
-    <input type="text" name="baby_age" placeholder="Baby's age (months)">
-    <input type="submit" value="Generate Meal Plan">
-  </form>
-  <script>
-    function generateMealPlan(babyAge) {
-      // Get the list of safe foods for babies of the given age.
-      var safeFoods = [
-        "Banana",
-        "Avocado",
-        "Oatmeal",
-        "Sweet potato",
-        "Butternut squash",
-        "Chicken",
-        "Salmon",
-        "Tofu",
-        "Eggs",
-        "Yogurt",
-        "Beef",
-        "Lentils",
-        "Quinoa",
-        "Brown rice",
-        "Pasta",
-        "Peanut butter",
-        "Bread",
-        "Apples",
-        "Oranges",
-        "Bananas",
-        "Berries"
-      ];
-
-      // Create a weekly meal plan.
-      var mealPlan = [];
-      for (var day = 0; day < 7; day++) {
-        var breakfast = safeFoods[Math.floor(Math.random() * safeFoods.length)];
-        var lunch = safeFoods[Math.floor(Math.random() * safeFoods.length)];
-        var dinner = safeFoods[Math.floor(Math.random() * safeFoods.length)];
-        mealPlan.push([breakfast, lunch, dinner]);
+  <head>
+    <title>Baby Led Weaning Meal Planner</title>
+  </head>
+  <body>
+    <h1>Baby Led Weaning Meal Planner</h1>
+    <p>This website can help you create a sample weekly baby led weaning meal plan.</p>
+    <script>
+      function generateMealPlan() {
+        // Get the list of safe foods for babies of all ages.
+        var safeFoods = ["Banana", "Avocado", "Oatmeal", "Sweet potato", "Butternut squash", "Chicken", "Salmon", "Tofu", "Eggs", "Yogurt", "Beef", "Lentils", "Quinoa", "Brown rice", "Pasta", "Peanut butter", "Bread", "Apples", "Oranges", "Bananas", "Berries", "Green beans", "Carrots", "Zucchini", "Squash", "Peas", "Potatoes", "Tomatoes", "Onions", "Garlic", "Cucumbers", "Celery", "Kale", "Spinach", "Broccoli", "Cauliflower", "Sweet potatoes", "Pumpkin", "Watermelon", "Cantaloupe", "Honeydew", "Grapefruit", "Mango", "Papaya", "Apricots", "Peaches", "Nectarines"];
+        // Create a list of common allergens.
+        var allergens = ["Peanuts", "Tree nuts", "Eggs", "Milk", "Fish", "Shellfish", "Soy", "Wheat"];
+        // Create a weekly meal plan.
+        var mealPlan = [];
+        for (var day = 0; day < 7; day++) {
+          // Get a random food from the list of safe foods.
+          var breakfast = safeFoods[Math.floor(Math.random() * safeFoods.length)];
+          var lunch = safeFoods[Math.floor(Math.random() * safeFoods.length)];
+          var dinner = safeFoods[Math.floor(Math.random() * safeFoods.length)];
+          // If the food is an allergen, add it to the list of allergens offered that day.
+          var allergensOffered = [];
+          for (var i = 0; i < 3; i++) {
+            if (allergens.includes(breakfast)) {
+              allergensOffered.push(breakfast);
+            }
+            if (allergens.includes(lunch)) {
+              allergensOffered.push(lunch);
+            }
+            if (allergens.includes(dinner)) {
+              allergensOffered.push(dinner);
+            }
+          }
+          // Add a column highlighting the allergens offered that day.
+          var mealPlanRow = document.createElement("tr");
+          mealPlanRow.innerHTML = " < td > " + (day + 1) + " < /td> < td > " + breakfast + " < /td> < td > " + lunch + " < /td> < td > " + dinner + " < /td> < td > " + allergensOffered + " < /td>";
+          mealPlanTable.appendChild(mealPlanRow);
+        }
       }
-
-      // Display the meal plan in a table format.
-      var mealPlanTable = document.getElementById("meal-plan-table");
-      mealPlanTable.innerHTML = "";
-      for (var day = 0; day < 7; day++) {
-        var mealPlanRow = document.createElement("tr");
-        mealPlanRow.innerHTML = "<td>" + (day + 1) + "</td><td>" + mealPlan[day][0] + "</td><td>" + mealPlan[day][1] + "</td><td>" + mealPlan[day][2] + "</td>";
-        mealPlanTable.appendChild(mealPlanRow);
-      }
-    }
-  </script>
-  <table id="meal-plan-table">
-    <thead>
-      <tr>
-        <th>Day</th>
-        <th>Breakfast</th>
-        <th>Lunch</th>
-        <th>Dinner</th>
-      </tr>
-    </thead>
-    <tbody>
-    </tbody>
-  </table>
-</body>
+      // Add an event listener to the button.
+      var generateMealPlanButton = document.getElementById("generateMealPlanButton");
+      generateMealPlanButton.addEventListener("click", generateMealPlan);
+    </script>
+    <table id="meal-plan-table">
+      <thead>
+        <tr>
+          <th>Meal</th>
+          <th>Breakfast</th>
+          <th>Lunch</th>
+          <th>Dinner</th>
+          <th>Allergens</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <button id="generateMealPlanButton">Generate Meal Plan</button>
+  </body>
 </html>

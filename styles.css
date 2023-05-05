@@ -58,3 +58,12 @@ th {
   color: red;
   font-weight: bold;
 }
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.button-container {
+  text-align: center;
+}

@@ -5,7 +5,7 @@ const mealPlanTable = document.getElementById("meal-plan-table");
 const clientId = '745981578491-nv66g7p1d0n1acr86u55rga2cpk0gon5.apps.googleusercontent.com';
 const apiKey = 'AIzaSyBH-ccnmdnoUCSlOjkjYg0Xyyi0CR-y800';
 const spreadsheetId = '1dV087gGD2-eV0Yd8Cr6O6w9qC0mwq8pK48MKdEViAns';
-const range = 'Sheet1!A:A'; // Adjust this range based on the location of your menu items in the sheet
+const range = 'Sheet1!A:B'; // Adjust this range based on the location of your menu items in the sheet
 
 // Define a function to load the Google Sheets API
 async function loadSheetsApi() {

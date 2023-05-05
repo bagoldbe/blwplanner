@@ -2,6 +2,30 @@
 const generateMealPlanButton = document.getElementById("generateMealPlanButton");
 const mealPlanTable = document.getElementById("meal-plan-table");
 
+// Define the menu of baby led weaning meals.
+const menu = [
+  "Sweet potato and black bean quesadilla",
+  "Broccoli and cheese frittata",
+  "Apple and cinnamon pancakes",
+  "Chickpea and sweet potato curry",
+  "Butternut squash and lentil soup",
+  "Avocado and tomato toast",
+  "Spinach and cheese omelette",
+  "Pesto pasta with cherry tomatoes",
+  "Cauliflower and cheese muffins",
+  "Sweet potato and lentil patties",
+  "Carrot and courgette muffins",
+  "Cheese and tomato quesadilla",
+  "Beetroot and feta salad",
+  "Tomato and basil pasta",
+  "Tofu and vegetable stir-fry",
+  "Sweet potato and carrot soup",
+  "Broccoli and cheese pasta",
+  "Roasted vegetable and quinoa salad",
+  "Hummus and vegetable wrap",
+  "Pumpkin and spinach risotto"
+];
+
 // Define a function to generate the meal plan.
 function getMealPlan() {
   const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];

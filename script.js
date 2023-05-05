@@ -13,14 +13,24 @@ const menu = [
   "Mashed Banana",
   "Soft Cooked Cauliflower Florets",
   "Steamed Butternut Squash",
-  "Soft Cooked Asparagus Spears"
+  "Soft Cooked Asparagus Spears",
+  "Cucumber Sticks",
+  "Steamed Peas",
+  "Baked Apple Slices",
+  "Soft Cooked Beets",
+  "Steamed Spinach",
+  "Mashed Pumpkin",
+  "Ripe Peach Slices",
+  "Soft Cooked Green Bell Pepper Strips",
+  "Mango Slices",
+  "Steamed Brussel Sprouts"
 ];
 
 // Define a function to generate the meal plan.
 function createMealPlan() {
   const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
   const meals = ["Breakfast", "Lunch", "Dinner"];
-  const allergens = ["peanuts", "shellfish", "gluten", "dairy", "soy"];
+  const allergens = ["cow's milk", "egg", "finned fish", "peanut", "sesame", "shellfish", "soy", "tree nuts", "wheat"];
   
   // clear any existing rows from the table
   mealPlanTable.innerHTML = "";

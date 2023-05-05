@@ -7,7 +7,10 @@ function getMealPlan() {
   const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
   const meals = ["Breakfast", "Lunch", "Dinner"];
   const allergens = ["cow's milk", "egg", "finned fish", "peanut", "sesame", "shellfish", "soy", "tree nuts", "wheat"];
-  const menu = [    {      name: "Scrambled eggs with cheese",      ingredients: ["eggs", "cheddar cheese", "butter", "salt", "pepper"],
+  const menu = [
+    {
+      name: "Scrambled eggs with cheese",
+      ingredients: ["eggs", "cheddar cheese", "butter", "salt", "pepper"],
     },
     {
       name: "Oatmeal with banana and cinnamon",
@@ -81,41 +84,4 @@ function getMealPlan() {
         "salt",
         "pepper",
       ],
-    },
-    {
-      name: "Zucchini and corn fritters",
-      ingredients: [
-        "zucchini",
-        "corn",
-        "flour",
-        "baking powder",
-        "eggs",
-        "milk",
-        "green onions",
-        "sour cream",
-      ],
-    },
-    {
-      name: "Spinach and ricotta stuffed shells",
-      ingredients: [
-        "jumbo pasta shells",
-        "ricotta cheese",
-        "spinach",
-        "garlic",
-        "parmesan cheese",
-        "marinara sauce",
-      ],
-    },
-    {
-      name: "Pesto pasta with cherry tomatoes",
-      ingredients: [
-        "pasta",
-        "basil pesto",
-        "cherry tomatoes",
-        "parmesan cheese",
-        "olive oil",
-        "garlic",
-      ],
-    },
-    {
-      name: "
+   

@@ -3,49 +3,55 @@ const generateMealPlanButton = document.getElementById("generateMealPlanButton")
 const mealPlanTable = document.getElementById("meal-plan-table");
 
 // Define a function to generate the meal plan.
-function generateMealPlan() {
-  // Get the list of safe foods for babies of all ages.
-  var safeFoods = ["Banana", "Avocado", "Oatmeal", "Sweet potato", "Butternut squash", "Chicken", "Salmon", "Tofu", "Eggs", "Yogurt", "Beef", "Lentils", "Quinoa", "Brown rice", "Pasta", "Peanut butter", "Bread", "Apples", "Oranges", "Bananas", "Berries", "Green beans", "Carrots", "Zucchini", "Squash", "Peas", "Potatoes", "Tomatoes", "Onions", "Garlic", "Cucumbers", "Celery", "Kale", "Spinach", "Broccoli", "Cauliflower", "Sweet potatoes", "Pumpkin", "Watermelon", "Cantaloupe", "Honeydew", "Grapefruit", "Mango", "Papaya", "Apricots", "Peaches", "Nectarines"];
-  // Create a list of common allergens.
-  var allergens = ["Peanuts", "Tree nuts", "Eggs", "Milk", "Fish", "Shellfish", "Soy", "Wheat"];
+function createMealPlan() {
+  const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
+  const meals = ["Breakfast", "Lunch", "Dinner"];
+  const allergens = ["peanuts", "shellfish", "gluten", "dairy", "soy"];
+  
+  const mealPlanTable = document.getElementById("meal-plan-table");
 
-  // Clear the existing table.
-  var table = document.getElementById("meal-plan-table");
-  table.getElementsByTagName("tbody")[0].innerHTML = "";
+  // clear any existing rows from the table
+  mealPlanTable.innerHTML = "";
 
-  // Create a weekly meal plan.
-  for (var day = 0; day < 7; day++) {
-    // Get a random food from the list of safe foods.
-    var breakfast = safeFoods[Math.floor(Math.random() * safeFoods.length)];
-    var lunch = safeFoods[Math.floor(Math.random() * safeFoods.length)];
-    var dinner = safeFoods[Math.floor(Math.random() * safeFoods.length)];
+  // create the header row
+  const headerRow = mealPlanTable.insertRow();
+  headerRow.insertCell().appendChild(document.createTextNode("Day"));
+  headerRow.insertCell().appendChild(document.createTextNode("Meal"));
+  headerRow.insertCell().appendChild(document.createTextNode("Menu"));
+  headerRow.insertCell().appendChild(document.createTextNode("Allergens"));
 
-    // If the food is an allergen, add it to the list of allergens offered that day.
-    var allergensOffered = [];
-    if (allergens.includes(breakfast)) {
-      allergensOffered.push(breakfast);
+  // create a map to keep track of which allergens have been assigned to which days
+  const allergenMap = new Map();
+  for (const allergen of allergens) {
+    allergenMap.set(allergen, []);
+  }
+
+  // create the meal plan rows
+  for (const day of days) {
+    for (const meal of meals) {
+      // choose a random menu item from the menu array
+      const menuItem = menu[Math.floor(Math.random() * menu.length)];
+
+      // choose an allergen for the meal
+      let allergen = "";
+      let allergenList = allergenMap.get(allergen);
+      while (allergenList.length === days.length) {
+        // all allergens have already been assigned to this day, so try a different allergen
+        allergen = allergens[Math.floor(Math.random() * allergens.length)];
+        allergenList = allergenMap.get(allergen);
+      }
+      allergenList.push(day);
+
+      // create the row for this meal in the meal plan table
+      const row = mealPlanTable.insertRow();
+      row.insertCell().appendChild(document.createTextNode(day));
+      row.insertCell().appendChild(document.createTextNode(meal));
+      row.insertCell().appendChild(document.createTextNode(menuItem));
+      row.insertCell().appendChild(document.createTextNode(allergen));
     }
-   
-
-    if (allergens.includes(lunch)) {
-      allergensOffered.push(lunch);
-    }
-    if (allergens.includes(dinner)) {
-      allergensOffered.push(dinner);
-    }
-    
-    // Add a row to the meal plan table.
-    const mealPlanRow = document.createElement("tr");
-    mealPlanRow.innerHTML = `
-      <td>${day + 1}</td>
-      <td>${breakfast}</td>
-      <td>${lunch}</td>
-      <td>${dinner}</td>
-      <td>${allergensOffered.join(", ")}</td>
-    `;
-    mealPlanTable.appendChild(mealPlanRow);
   }
 }
+
 
 // Add an event listener to the button.
 generateMealPlanButton.addEventListener("click", generateMealPlan);

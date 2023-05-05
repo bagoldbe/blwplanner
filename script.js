@@ -1,6 +1,7 @@
 // Get a reference to the button and table elements.
 const generateMealPlanButton = document.getElementById("generateMealPlanButton");
 const mealPlanTable = document.getElementById("meal-plan-table");
+const recipeElement = document.getElementById("recipe");
 
 // Define a function to generate the meal plan.
 function getMealPlan() {
@@ -22,44 +23,4 @@ function getMealPlan() {
   });
 
   // Store the meal plan in Local Storage.
-  localStorage.setItem("mealPlan", JSON.stringify(mealPlan));
-
-  return mealPlan;
-}
-
-// Define a function to display the meal plan in the table.
-function displayMealPlan(mealPlan) {
-  const tbody = mealPlanTable.querySelector("tbody");
-  tbody.innerHTML = "";
-
-  Object.keys(mealPlan).forEach((day) => {
-    const row = tbody.insertRow();
-    const dayCell = row.insertCell();
-    dayCell.textContent = day;
-
-    Object.keys(mealPlan[day]).forEach((meal) => {
-      if (meal !== "Allergens") {
-        const mealCell = row.insertCell();
-        mealCell.textContent = mealPlan[day][meal];
-      }
-    });
-
-    const allergensCell = row.insertCell();
-    allergensCell.textContent = mealPlan[day]["Allergens"];
-  });
-}
-
-// Define a function to load the meal plan from Local Storage.
-function loadMealPlan() {
-  const mealPlan = JSON.parse(localStorage.getItem("mealPlan"));
-  if (mealPlan) {
-    displayMealPlan(mealPlan);
-  }
-}
-
-// Add an event listener to the button.
-generateMealPlanButton.addEventListener("click", () => {
-  const mealPlan = getMealPlan();
-  displayMealPlan(mealPlan);
-  loadMealPlan();
-});
+  localStorage.setItem("mealPlan",

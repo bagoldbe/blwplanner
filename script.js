@@ -9,17 +9,16 @@ const range = 'Sheet1!A:B'; // Adjust this range based on the location of your m
 
 // Define a function to load the Google Sheets API
 async function loadSheetsApi() {
-  while (typeof gapi === "undefined") {
-    await new Promise((resolve) => setTimeout(resolve, 100));
-  }
-
   const iframe = document.querySelector('iframe[src*="https://apis.google.com"]');
   if (iframe) {
     iframe.removeAttribute('sandbox');
   }
 
+  await new Promise((resolve) => setTimeout(resolve, 100));
+
   gapi.load('client:auth2', initClient);
 }
+
 
 
 // Initialize the Google Sheets API client

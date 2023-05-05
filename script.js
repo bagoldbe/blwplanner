@@ -2,14 +2,27 @@
 const generateMealPlanButton = document.getElementById("generateMealPlanButton");
 const mealPlanTable = document.getElementById("meal-plan-table");
 
+// Define your menu items
+const menu = [
+  // Add your menu items here, as an example:
+  "Chicken Salad",
+  "Grilled Cheese Sandwich",
+  "Pasta Primavera",
+  "Caesar Salad",
+  "Fish Tacos",
+  "Stir Fry Vegetables",
+  "BBQ Chicken",
+  "Pizza",
+  "Sushi",
+  "Spaghetti Bolognese"
+];
+
 // Define a function to generate the meal plan.
 function createMealPlan() {
   const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
   const meals = ["Breakfast", "Lunch", "Dinner"];
   const allergens = ["peanuts", "shellfish", "gluten", "dairy", "soy"];
   
-  const mealPlanTable = document.getElementById("meal-plan-table");
-
   // clear any existing rows from the table
   mealPlanTable.innerHTML = "";
 
@@ -51,7 +64,6 @@ function createMealPlan() {
     }
   }
 }
-
 
 // Add an event listener to the button.
 generateMealPlanButton.addEventListener("click", createMealPlan);

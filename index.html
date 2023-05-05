@@ -2,11 +2,11 @@
 <html>
   <head>
     <title>Baby Led Weaning Meal Planner</title>
+    <link rel="stylesheet" href="styles.css">
   </head>
   <body>
     <h1>Baby Led Weaning Meal Planner</h1>
     <p>This website can help you create a sample weekly baby led weaning meal plan.</p>
-
     <table id="meal-plan-table">
       <thead>
         <tr>
@@ -20,32 +20,6 @@
       <tbody></tbody>
     </table>
     <button id="generateMealPlanButton">Generate Meal Plan</button>
-
-    <script>
-      function generateMealPlan() {
-        // Get the list of safe foods for babies of all ages.
-        var safeFoods = ["Banana", "Avocado", "Oatmeal", "Sweet potato", "Butternut squash", "Chicken", "Salmon", "Tofu", "Eggs", "Yogurt", "Beef", "Lentils", "Quinoa", "Brown rice", "Pasta", "Peanut butter", "Bread", "Apples", "Oranges", "Bananas", "Berries", "Green beans", "Carrots", "Zucchini", "Squash", "Peas", "Potatoes", "Tomatoes", "Onions", "Garlic", "Cucumbers", "Celery", "Kale", "Spinach", "Broccoli", "Cauliflower", "Sweet potatoes", "Pumpkin", "Watermelon", "Cantaloupe", "Honeydew", "Grapefruit", "Mango", "Papaya", "Apricots", "Peaches", "Nectarines"];
-        // Create a list of common allergens.
-        var allergens = ["Peanuts", "Tree nuts", "Eggs", "Milk", "Fish", "Shellfish", "Soy", "Wheat"];
-        // Create a weekly meal plan.
-        var mealPlanTable = document.getElementById("meal-plan-table").getElementsByTagName('tbody')[0];
-        var mealPlan = [];
-        for (var day = 0; day < 7; day++) {
-          // Get a random food from the list of safe foods.
-          var breakfast = safeFoods[Math.floor(Math.random() * safeFoods.length)];
-          var lunch = safeFoods[Math.floor(Math.random() * safeFoods.length)];
-          var dinner = safeFoods[Math.floor(Math.random() * safeFoods.length)];
-          // If the food is an allergen, add it to the list of allergens offered that day.
-          var allergensOffered = [];
-          for (var i = 0; i < 3; i++) {
-            if (allergens.includes(breakfast)) {
-              allergensOffered.push(breakfast);
-            }
-            if (allergens.includes(lunch)) {
-              allergensOffered.push(lunch);
-            }
-            if (allergens.includes(dinner)) {
-              allergensOffered.push(dinner);
-            }
-          }
-          // Add a column highlighting the allergens offered that day.
+    <script src="script.js"></script>
+  </body>
+</html>

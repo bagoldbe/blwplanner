@@ -7,6 +7,7 @@ function getMealPlan() {
   const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
   const meals = ["Breakfast", "Lunch", "Dinner"];
   const allergens = ["cow's milk", "egg", "finned fish", "peanut", "sesame", "shellfish", "soy", "tree nuts", "wheat"];
+  const menu = [    "Scrambled eggs with cheese",    "Oatmeal with banana and cinnamon",    "Grilled cheese sandwich",    "Sweet potato and black bean tacos",    "Chicken and vegetable stir fry",    "Salmon and vegetable kebabs",    "Mini turkey meatballs with tomato sauce",    "Broccoli and cheddar cheese omelet",    "Zucchini and corn fritters",    "Spinach and ricotta stuffed shells",    "Pesto pasta with cherry tomatoes",    "Cauliflower and cheese soup",    "Quinoa and black bean burgers",    "Hummus and vegetable wrap",    "Cheesy cauliflower tots",    "Butternut squash and apple soup",    "Tuna and vegetable sushi rolls",    "Peanut butter and banana sandwich",    "Vegetable and lentil curry",    "Sweet potato fries with dipping sauce"  ];
 
   // Generate the meal plan.
   const mealPlan = {};
@@ -60,7 +61,4 @@ function loadMealPlan() {
 generateMealPlanButton.addEventListener("click", () => {
   const mealPlan = getMealPlan();
   displayMealPlan(mealPlan);
-});
-
-// Load the meal plan from Local Storage on page load.
-loadMealPlan();
+  loadMealPlan

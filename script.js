@@ -54,4 +54,4 @@ function createMealPlan() {
 
 
 // Add an event listener to the button.
-generateMealPlanButton.addEventListener("click", generateMealPlan);
+generateMealPlanButton.addEventListener("click", createMealPlan);

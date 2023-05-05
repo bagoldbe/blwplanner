@@ -8,7 +8,11 @@ const spreadsheetId = '1dV087gGD2-eV0Yd8Cr6O6w9qC0mwq8pK48MKdEViAns';
 const range = 'Sheet1!A:A'; // Adjust this range based on the location of your menu items in the sheet
 
 // Define a function to load the Google Sheets API
-function loadSheetsApi() {
+async function loadSheetsApi() {
+  while (typeof gapi === "undefined") {
+    await new Promise((resolve) => setTimeout(resolve, 100));
+  }
+
   gapi.load('client:auth2', initClient);
 }
 

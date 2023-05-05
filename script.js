@@ -45,7 +45,7 @@ function createMealPlan() {
       const menuItem = menu[Math.floor(Math.random() * menu.length)];
 
       // choose an allergen for the meal
-      let allergen = "";
+      let allergen = allergens[Math.floor(Math.random() * allergens.length)];
       let allergenList = allergenMap.get(allergen);
       while (allergenList.length === days.length) {
         // all allergens have already been assigned to this day, so try a different allergen

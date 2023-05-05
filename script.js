@@ -22,6 +22,7 @@ function initClient() {
     apiKey: apiKey,
     clientId: clientId,
     scope: 'https://www.googleapis.com/auth/spreadsheets.readonly',
+    cookie_policy: 'single_host_origin'
   }).then(() => {
     gapi.auth2.getAuthInstance().signIn();
   });

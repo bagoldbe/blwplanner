@@ -1,0 +1,43 @@
+body {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+}
+
+h1 {
+  font-size: 32px;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 10px;
+  border: 1px solid black;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+#generateMealPlanButton {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 10px;
+  cursor: pointer;
+}
+
+#generateMealPlanButton:hover {
+  background-color: #3e8e41;
+}
+
+.error {
+  color: red;
+  font-weight: bold;
+}

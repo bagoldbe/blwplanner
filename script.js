@@ -18,6 +18,7 @@ async function loadSheetsApi() {
 
 // Initialize the Google Sheets API client
 function initClient() {
+  console.log("Google Sheets API loaded successfully.");
   gapi.client.init({
     apiKey: apiKey,
     clientId: clientId,

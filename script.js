@@ -28,8 +28,7 @@ function createMealPlan() {
   // create the header row
   const headerRow = mealPlanTable.insertRow();
   headerRow.insertCell().appendChild(document.createTextNode("Day"));
-  headerRow.insertCell().appendChild(document.createTextNode("Meal"));
-  headerRow.insertCell().appendChild(document.createTextNode("Menu"));
+  headerRow.insertCell().appendChild(document.createTextNode("Meals"));
   headerRow.insertCell().appendChild(document.createTextNode("Allergens"));
 
   // create a map to keep track of which allergens have been assigned to which days
@@ -40,6 +39,8 @@ function createMealPlan() {
 
   // create the meal plan rows
   for (const day of days) {
+    const mealItems = [];
+    const mealAllergens = [];
     for (const meal of meals) {
       // choose a random menu item from the menu array
       const menuItem = menu[Math.floor(Math.random() * menu.length)];
@@ -54,13 +55,15 @@ function createMealPlan() {
       }
       allergenList.push(day);
 
-      // create the row for this meal in the meal plan table
-      const row = mealPlanTable.insertRow();
-      row.insertCell().appendChild(document.createTextNode(day));
-      row.insertCell().appendChild(document.createTextNode(meal));
-      row.insertCell().appendChild(document.createTextNode(menuItem));
-      row.insertCell().appendChild(document.createTextNode(allergen));
+      mealItems.push(`${meal}: ${menuItem}`);
+      mealAllergens.push(`${meal}: ${allergen}`);
     }
+
+    // create the row for this day in the meal plan table
+    const row = mealPlanTable.insertRow();
+    row.insertCell().appendChild(document.createTextNode(day));
+    row.insertCell().appendChild(document.createTextNode(mealItems.join(', ')));
+    row.insertCell().appendChild(document.createTextNode(mealAllergens.join(', ')));
   }
 }
 

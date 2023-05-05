@@ -13,8 +13,14 @@ async function loadSheetsApi() {
     await new Promise((resolve) => setTimeout(resolve, 100));
   }
 
+  const iframe = document.querySelector('iframe[src*="https://apis.google.com"]');
+  if (iframe) {
+    iframe.removeAttribute('sandbox');
+  }
+
   gapi.load('client:auth2', initClient);
 }
+
 
 // Initialize the Google Sheets API client
 function initClient() {

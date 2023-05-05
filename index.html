@@ -1,109 +1,71 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Meal Plan</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-    
-    h1 {
-      text-align: center;
-    }
-    
-    table {
-      border-collapse: collapse;
-      margin: auto;
-    }
-    
-    th, td {
-      border: 1px solid black;
-      padding: 10px;
-      text-align: center;
-      width: 150px;
-      height: 60px;
-      font-size: 16px;
-      font-weight: bold;
-      background-color: white;
-      color: black;
-    }
-    
-    th {
-      background-color: #1E90FF;
-      color: white;
-    }
-    
-    th:first-child, td:first-child {
-      background-color: #1E90FF;
-      color: white;
-      font-size: 20px;
-    }
-    
-    td:hover {
-      background-color: #F0E68C;
-      cursor: pointer;
-    }
-    
-    td:focus {
-      outline: none;
-      background-color: #FFFFE0;
-    }
-    
-    td[contenteditable=true]:empty::before {
-      content: "Click to edit";
-      color: gray;
-      font-style: italic;
-    }
-  </style>
+  <title>Baby Led Weaning Meal Planner</title>
 </head>
 <body>
-  <h1>Meal Plan</h1>
-  <table>
+  <h1>Baby Led Weaning Meal Planner</h1>
+  <p>This website can help you create a sample weekly baby led weaning meal plan in a table format.</p>
+  <form action="/generate-meal-plan" method="post">
+    <input type="text" name="baby_age" placeholder="Baby's age (months)">
+    <input type="submit" value="Generate Meal Plan">
+  </form>
+  <script>
+    function generateMealPlan(babyAge) {
+      // Get the list of safe foods for babies of the given age.
+      var safeFoods = [
+        "Banana",
+        "Avocado",
+        "Oatmeal",
+        "Sweet potato",
+        "Butternut squash",
+        "Chicken",
+        "Salmon",
+        "Tofu",
+        "Eggs",
+        "Yogurt",
+        "Beef",
+        "Lentils",
+        "Quinoa",
+        "Brown rice",
+        "Pasta",
+        "Peanut butter",
+        "Bread",
+        "Apples",
+        "Oranges",
+        "Bananas",
+        "Berries"
+      ];
+
+      // Create a weekly meal plan.
+      var mealPlan = [];
+      for (var day = 0; day < 7; day++) {
+        var breakfast = safeFoods[Math.floor(Math.random() * safeFoods.length)];
+        var lunch = safeFoods[Math.floor(Math.random() * safeFoods.length)];
+        var dinner = safeFoods[Math.floor(Math.random() * safeFoods.length)];
+        mealPlan.push([breakfast, lunch, dinner]);
+      }
+
+      // Display the meal plan in a table format.
+      var mealPlanTable = document.getElementById("meal-plan-table");
+      mealPlanTable.innerHTML = "";
+      for (var day = 0; day < 7; day++) {
+        var mealPlanRow = document.createElement("tr");
+        mealPlanRow.innerHTML = "<td>" + (day + 1) + "</td><td>" + mealPlan[day][0] + "</td><td>" + mealPlan[day][1] + "</td><td>" + mealPlan[day][2] + "</td>";
+        mealPlanTable.appendChild(mealPlanRow);
+      }
+    }
+  </script>
+  <table id="meal-plan-table">
     <thead>
       <tr>
-        <th></th>
-        <th>Monday</th>
-        <th>Tuesday</th>
-        <th>Wednesday</th>
-        <th>Thursday</th>
-        <th>Friday</th>
-        <th>Saturday</th>
-        <th>Sunday</th>
+        <th>Day</th>
+        <th>Breakfast</th>
+        <th>Lunch</th>
+        <th>Dinner</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td><strong>Breakfast</strong></td>
-        <td contenteditable="true"></td>
-        <td contenteditable="true"></td>
-        <td contenteditable="true"></td>
-        <td contenteditable="true"></td>
-        <td contenteditable="true"></td>
-        <td contenteditable="true"></td>
-        <td contenteditable="true"></td>
-      </tr>
-      <tr>
-        <td><strong>Lunch</strong></td>
-        <td contenteditable="true"></td>
-        <td contenteditable="true"></td>
-        <td contenteditable="true"></td>
-        <td contenteditable="true"></td>
-        <td contenteditable="true"></td>
-        <td contenteditable="true"></td>
-        <td contenteditable="true"></td>
-      </tr>
-      <tr>
-        <td><strong>Dinner</strong></td>
-        <td contenteditable="true"></td>
-        <td contenteditable="true"></td>
-        <td contenteditable="true"></td>
-        <td contenteditable="true"></td>
-        <td contenteditable="true"></td>
-        <td contenteditable="true"></td>
-        <td contenteditable="true"></td>
-      </tr>
     </tbody>
   </table>
 </body>

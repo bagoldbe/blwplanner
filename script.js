@@ -5,25 +5,28 @@ const mealPlanTable = document.getElementById("meal-plan-table");
 // Define a function to generate the meal plan.
 function generateMealPlan() {
   // Get the list of safe foods for babies of all ages.
-  const safeFoods = ["Banana", "Avocado", "Oatmeal", "Sweet potato", "Butternut squash", "Chicken", "Salmon", "Tofu", "Eggs", "Yogurt", "Beef", "Lentils", "Quinoa", "Brown rice", "Pasta", "Peanut butter", "Bread", "Apples", "Oranges", "Bananas", "Berries", "Green beans", "Carrots", "Zucchini", "Squash", "Peas", "Potatoes", "Tomatoes", "Onions", "Garlic", "Cucumbers", "Celery", "Kale", "Spinach", "Broccoli", "Cauliflower", "Sweet potatoes", "Pumpkin", "Watermelon", "Cantaloupe", "Honeydew", "Grapefruit", "Mango", "Papaya", "Apricots", "Peaches", "Nectarines"];
-  
+  var safeFoods = ["Banana", "Avocado", "Oatmeal", "Sweet potato", "Butternut squash", "Chicken", "Salmon", "Tofu", "Eggs", "Yogurt", "Beef", "Lentils", "Quinoa", "Brown rice", "Pasta", "Peanut butter", "Bread", "Apples", "Oranges", "Bananas", "Berries", "Green beans", "Carrots", "Zucchini", "Squash", "Peas", "Potatoes", "Tomatoes", "Onions", "Garlic", "Cucumbers", "Celery", "Kale", "Spinach", "Broccoli", "Cauliflower", "Sweet potatoes", "Pumpkin", "Watermelon", "Cantaloupe", "Honeydew", "Grapefruit", "Mango", "Papaya", "Apricots", "Peaches", "Nectarines"];
   // Create a list of common allergens.
-  const allergens = ["Peanuts", "Tree nuts", "Eggs", "Milk", "Fish", "Shellfish", "Soy", "Wheat"];
-  
+  var allergens = ["Peanuts", "Tree nuts", "Eggs", "Milk", "Fish", "Shellfish", "Soy", "Wheat"];
+
+  // Clear the existing table.
+  var table = document.getElementById("meal-plan-table");
+  table.getElementsByTagName("tbody")[0].innerHTML = "";
+
   // Create a weekly meal plan.
-  const mealPlan = [];
-  
-  for (let day = 0; day < 7; day++) {
+  for (var day = 0; day < 7; day++) {
     // Get a random food from the list of safe foods.
-    const breakfast = safeFoods[Math.floor(Math.random() * safeFoods.length)];
-    const lunch = safeFoods[Math.floor(Math.random() * safeFoods.length)];
-    const dinner = safeFoods[Math.floor(Math.random() * safeFoods.length)];
-    
+    var breakfast = safeFoods[Math.floor(Math.random() * safeFoods.length)];
+    var lunch = safeFoods[Math.floor(Math.random() * safeFoods.length)];
+    var dinner = safeFoods[Math.floor(Math.random() * safeFoods.length)];
+
     // If the food is an allergen, add it to the list of allergens offered that day.
-    const allergensOffered = [];
+    var allergensOffered = [];
     if (allergens.includes(breakfast)) {
       allergensOffered.push(breakfast);
     }
+   
+
     if (allergens.includes(lunch)) {
       allergensOffered.push(lunch);
     }

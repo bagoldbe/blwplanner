@@ -41,49 +41,27 @@ function getMealPlan() {
       ingredients: ["eggs", "cheddar cheese", "broccoli"],
     },
     {
-      name: "Zucchini and corn fritters",
-      ingredients: ["zucchini", "corn", "flour"],
-    },
-    {
-      name: "Spinach and ricotta stuffed shells",
-      ingredients: ["jumbo pasta shells", "ricotta cheese", "spinach"],
-    },
-    {
-      name: "Pesto pasta with cherry tomatoes",
-      ingredients: ["pasta", "basil pesto", "cherry tomatoes"],
-    },
-    {
-      name: "Cauliflower and cheese soup",
-      ingredients: ["cauliflower", "cheddar cheese", "milk"],
-    },
-    {
-      name: "Hummus and vegetable wrap",
-      ingredients: ["hummus", "tortilla", "vegetables"],
-    },
-    {
-      name: "Cheesy cauliflower tots",
-      ingredients: ["cauliflower", "cheddar cheese", "breadcrumbs"],
-    },
-    {
-      name: "Butternut squash and apple soup",
-      ingredients: ["butternut squash", "apple", "onion"],
-    },
-    {
-      name: "Tuna and vegetable sushi rolls",
-      ingredients: ["sushi rice", "tuna", "vegetables"],
-    },
-    {
-      name: "Peanut butter and banana sandwich",
-      ingredients: ["bread", "peanut butter", "banana"],
-    },
-    {
-      name: "Vegetable and lentil curry",
-      ingredients: ["lentils", "vegetables", "curry powder"],
-    },
-    {
-      name: "Sweet potato fries with dipping sauce",
-      ingredients: ["sweet potato", "cornstarch", "dipping sauce"],
-    }
-  ];
+const menu = [
+  {
+    name: "Avocado Toast",
+    ingredients: ["avocado", "bread", "lemon juice"],
+  },
+  {
+    name: "Sweet Potato Fries",
+    ingredients: ["sweet potato", "olive oil", "sea salt"],
+  },
+  {
+    name: "Broccoli Cheese Bites",
+    ingredients: ["broccoli", "cheddar cheese", "breadcrumbs"],
+  },
+  {
+    name: "Banana Pancakes",
+    ingredients: ["banana", "egg", "cinnamon"],
+  },
+  {
+    name: "Roasted Carrots",
+    ingredients: ["carrots", "olive oil", "thyme"],
+  },
+];
 
   //
